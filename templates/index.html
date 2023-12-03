@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style> #table_heading {
+        text-align: center;
+      } 
+    </style>
+  </head>
+  <body>
+    <div id = 'table_heading'> 
+        <h2> Upload your CSV file </h2>
+        <p> <strong>Note:</strong> CSV file should contains two fields as Name, Age </p>
+        <br/><br/>
+        <div>
+          <form action="/result" method="post" enctype="multipart/form-data">
+            <label for="formFileLg" class="form-label">Upload your file here:</label>
+            <input class="form-control form-control-lg" id="formFileLg" type="file", name="file">
+            <br/>
+            <button type="submit" value="Upload" class="btn btn-primary mb-3">Submit</button>
+          </form>
+        </div>
+        <br/><br/>
+        <div>
+          <h2 id = 'table_heading'> User Data </h2>
+          <br/> <br/>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for info in data %}
+                  <tr>
+                    <td>{{info.id}}</td>
+                    <td>{{info.name}}</td>
+                    <td>{{info.age}}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+        </div>
+    </div>
+    <br/> <br/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
